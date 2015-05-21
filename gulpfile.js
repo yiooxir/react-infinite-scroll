@@ -5,6 +5,7 @@ var runSequence = require('run-sequence');
 var plugins = require('gulp-load-plugins')({scope: ['dependencies']});
 var del = require('del');
 var browserSync = require('browser-sync').create();
+var babel = require("gulp-babel");
 
 /**
  * Jest cli requires --harmony flags for < node 0.12
@@ -21,7 +22,8 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('build', function () {
-  return gulp.src(['app.js', 'scripts/*.js'])
+  return gulp.src(['app.js', 'scripts/*.js', 'src/*.js', 'example/*.js'])
+    .pipe(babel())
     .pipe(plugins.react())
     .pipe(gulp.dest('components'));
 });
@@ -35,7 +37,7 @@ gulp.task('serve', function () {
     }
   });
 
-  gulp.watch(['scripts/*.js', '*.html'], ['watch-source']);
+  gulp.watch(['scripts/*.js', 'src/*.js', 'example/*.js', '*.html'], ['watch-source']);
 
 });
 

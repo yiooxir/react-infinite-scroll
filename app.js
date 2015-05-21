@@ -1,6 +1,18 @@
 'use strict';
 
-var React = require('react');
-var CheckboxWithLabel = require('components/testComponent');
+import React from 'react'
+import Display from 'components/react.display'
+//import Server from 'components/server.mock'
 
-React.render(<CheckboxWithLabel labelOn="On" labelOff="Off" />, document.getElementById('view'));
+//var api = new Server();
+
+var objects = (function() {
+    var objs = [];
+
+    for (var a = 1; a<100; a++) {
+        objs.push({name: 'name' + a})
+    }
+    return objs;
+})();
+
+React.render(<Display labelOn="On" labelOff="Off" contacts = {objects} />, document.getElementById('view'));

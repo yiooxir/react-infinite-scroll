@@ -1,6 +1,7 @@
 'use strict';
 
-var React = require('react/addons');
+import React from 'react'
+
 var CheckboxWithLabel = React.createClass({
   getInitialState: function() {
     return { isChecked: false };
@@ -21,4 +22,5 @@ var CheckboxWithLabel = React.createClass({
     );
   }
 });
-module.exports = CheckboxWithLabel;
+
+export default CheckboxWithLabel;
