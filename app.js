@@ -9,7 +9,7 @@ import Display from 'components/react.display'
 var objects = (function() {
     var objs = [];
 
-    for (var a = 1; a<100; a++) {
+    for (var a = 1; a<300; a++) {
         objs.push({name: 'name' + a})
     }
     return objs;
