@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "postinstall": "gulp build"
+    "build": "gulp build"
   },
   "jest": {
     "scriptPreprocessor": "./preprocessor.js",
@@ -34,10 +34,11 @@
     "jsx": "^0.9.89",
     "react": "^0.13.2",
     "react-tools": "^0.13.2",
-    "run-sequence": "^1.1.0"
+    "run-sequence": "^1.1.0",
+    "browser-sync": "^2.7.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.7.1"
+
   },
   "jspm": {
     "directories": {},
