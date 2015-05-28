@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "gulp build"
+    "prepublish": "gulp build"
   },
   "jest": {
     "scriptPreprocessor": "./preprocessor.js",
