@@ -30,6 +30,9 @@
 
   },
   "jspm": {
+    "scripts": {
+      "postinstall": "gulp build"
+    },
     "directories": {},
     "configFile": "jspm.config.js",
     "dependencies": {
