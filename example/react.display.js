@@ -1,7 +1,6 @@
 
 import React from 'react'
-import Infinity from 'components/react.infinity'
-import $ from 'jquery'
+import Infinity from './react-infinity'
 
 export default React.createClass({
 

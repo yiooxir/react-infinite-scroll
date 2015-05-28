@@ -7,7 +7,7 @@ export default React.createClass({
         return {
             page: 1,
             pages: 1,
-            shift: 2,
+            shift: 100,
             load: () => {},
             children: this.children,
             threshold: 50,
@@ -80,9 +80,9 @@ export default React.createClass({
         };
     },
 
-    shift: function (lines) {
+    shift: function (px) {
         if (this.props.page != 1) {
-            this.scrollBox.scrollByLines(lines || this.props.shift, 0);
+            this.scrollBox.scrollTop = px || this.props.shift;
         }
     }
 });

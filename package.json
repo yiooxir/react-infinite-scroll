@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "postinstall": "jspm install"
+    "postinstall": "gulp build"
   },
   "jest": {
     "scriptPreprocessor": "./preprocessor.js",
@@ -26,23 +26,24 @@
     "gulp-filter": "^2.0.2",
     "gulp-load-plugins": "^0.10.0",
     "gulp-react": "^3.0.1",
+    "gulp-rename": "^1.2.2",
     "gulp-shell": "^0.4.1",
     "harmonize": "^1.4.1",
     "jest-cli": "^0.4.1",
-    "jspm": "^0.15.5",
+    "jspm": "^0.15.6",
+    "jsx": "^0.9.89",
     "react": "^0.13.2",
     "react-tools": "^0.13.2",
     "run-sequence": "^1.1.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.7.1",
-    "gulp": "^3.8.11"
+    "browser-sync": "^2.7.1"
   },
   "jspm": {
     "directories": {},
+    "configFile": "jspm.config.js",
     "dependencies": {
-      "jquery": "github:components/jquery@^2.1.4",
-      "react": "npm:react@^0.13.2"
+      "react": "npm:react@^0.14.0-alpha3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",

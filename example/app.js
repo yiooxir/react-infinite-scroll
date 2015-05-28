@@ -1,10 +1,7 @@
 'use strict';
 
 import React from 'react'
-import Display from 'components/react.display'
-//import Server from 'components/server.mock'
-
-//var api = new Server();
+import Display from './react.display'
 
 var objects = (function() {
     var objs = [];
