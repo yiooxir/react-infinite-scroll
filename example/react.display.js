@@ -11,27 +11,30 @@ export default React.createClass({
         }
     },
 
-
-    load(page) {
-        console.log('+++', page);
+    load(page, insertLeft) {
+        console.log(page,insertLeft);
         this.setState({
-            filtered: this.state.filtered.concat(this.props.contacts.splice(page * 20, 20))
+            filtered: insertLeft ?
+                this.props.contacts.splice(page * 20, 20).concat(this.state.filtered) :
+                this.state.filtered.concat(this.props.contacts.splice(page * 20, 20))
         })
     },
 
     render: function() {
         var list = this.state.filtered.map((e) => {
-            return (<li> e.name </li>)
+            return (<li> {e.name} </li>)
         });
 
         var wrapStyle = {height: "300px", width: "300px", overflow: "auto"};
 
-        return (< div className={"wrap"} style={wrapStyle} >
-            <ul className={"box"}>
+        return (< div id="wrap" style={wrapStyle} >
+            <ul id="box">
                 <Infinity
-                    scrollBoxId = {".wrap"}
-                    containerId = {".box"}
+                    scrollBoxId = {"wrap"}
+                    containerId = {"box"}
                     load = {this.load}
+                    page = {3}
+                    pages = {9}
                 > {list} </Infinity>
             </ul>
         </div>

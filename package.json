@@ -1,7 +1,7 @@
 {
-  "name": "react-jest-gulp-seed",
+  "name": "react-infinity-scroll",
   "version": "1.0.0",
-  "description": "Seed for React Jest Gulp Project",
+  "description": "infinity scroll on react",
   "main": "index.js",
   "scripts": {
     "test": "jest",
