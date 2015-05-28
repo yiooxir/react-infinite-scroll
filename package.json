@@ -2,22 +2,11 @@
   "name": "react-infinity-scroll",
   "version": "1.0.0",
   "description": "infinity scroll on react",
-  "main": "index.js",
+  "main": "lib/react-infinity.js",
   "scripts": {
-    "compile": "gulp build",
-    "prepublish": "npm run compile"
+    "postinstall": "gulp build"
   },
-  "jest": {
-    "scriptPreprocessor": "./preprocessor.js",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/jspm_packages"
-    ],
-    "unmockedModulePathPatterns": [
-      "./node_modules/react"
-    ]
-  },
-  "author": "Shidhin CR <shidhincr@gmail.com> (http://www.undefinednull.com/)",
+  "author": "Borovikov SA",
   "license": "ISC",
   "dependencies": {
     "del": "^1.1.1",
