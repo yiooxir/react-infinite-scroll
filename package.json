@@ -4,8 +4,8 @@
   "description": "infinity scroll on react",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "prepublish": "gulp build"
+    "compile": "gulp build",
+    "prepublish": "npm run compile"
   },
   "jest": {
     "scriptPreprocessor": "./preprocessor.js",
