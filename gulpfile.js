@@ -54,7 +54,7 @@ gulp.task('buildExampleSite', ['clean-components'], function () {
         .pipe(gulp.dest('components'));
 });
 
-gulp.task('watch-source', ['buildExampleSite'], browserSync.reload);
+gulp.task('watch-source', ['build','buildExampleSite'], browserSync.reload);
 
 gulp.task('serve', function () {
     browserSync.init({
@@ -78,6 +78,7 @@ gulp.task('jest', plugins.shell.task('npm test', {
 gulp.task('develop', function (cb) {
     runSequence(
         'build',
+        'buildExampleSite',
         'serve',
         cb
     );

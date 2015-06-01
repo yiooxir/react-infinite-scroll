@@ -5,7 +5,7 @@ export default React.createClass({
 
     getDefaultProps: function() {
         return {
-            shift: 100,
+            shift: 1,
             load: () => {},
             children: this.children,
             threshold: 50,
@@ -16,7 +16,7 @@ export default React.createClass({
     componentDidMount: function() {
         var {scrollBoxId, containerId} = this.props;
 
-/* get dom element */
+        /* get dom element */
         this.scrollBox = document.getElementById(scrollBoxId);
         this.container = document.getElementById(containerId);
 
@@ -34,8 +34,10 @@ export default React.createClass({
         console.log('componentWillUnmount')
     },
     render: function() {
+        var style = {overflow: 'hidden'};
+
         return (
-            <div>{this.props.children}</div>
+            <div style={style}>{this.props.children}</div>
         )
     },
 
@@ -45,9 +47,9 @@ export default React.createClass({
 
         /* pages which has been loaded  { array of number } */
         var cached = [page],
-            /* if previous step was loaded */
+        /* if previous step was loaded */
             prev = false,
-            /* sign for load function */
+        /* sign for load function */
             insertLeft = false;
 
         var isBreakUp = () => {
@@ -65,9 +67,7 @@ export default React.createClass({
     },
 
     shift: function (px) {
-        if (this.props.page != 1) {
-            this.scrollBox.scrollTop = px || this.props.shift;
-        }
+        this.scrollBox.scrollTop = px || this.props.shift;
     }
 });
 
