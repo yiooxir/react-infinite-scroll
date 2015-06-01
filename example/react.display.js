@@ -10,13 +10,15 @@ export default React.createClass({
         }
     },
 
-    load(page, insertLeft) {
-        console.log(page,insertLeft);
-        this.setState({
-            filtered: insertLeft ?
-                this.props.contacts.splice(page * 20, 20).concat(this.state.filtered) :
-                this.state.filtered.concat(this.props.contacts.splice(page * 20, 20))
-        })
+    load(page) {
+
+        console.log(page);
+
+        //this.setState({
+        //    filtered: insertLeft ?
+        //        this.props.contacts.splice(page * 20, 20).concat(this.state.filtered) :
+        //        this.state.filtered.concat(this.props.contacts.splice(page * 20, 20))
+        //})
     },
 
     render: function() {

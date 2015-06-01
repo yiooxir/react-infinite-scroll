@@ -5,8 +5,6 @@ export default React.createClass({
 
     getDefaultProps: function() {
         return {
-            page: 1,
-            pages: 1,
             shift: 100,
             load: () => {},
             children: this.children,
@@ -61,22 +59,8 @@ export default React.createClass({
         };
 
         scrollBox.onscroll = () => {
-            var reqPageNum = null;
-
-            if (isBreakDown() && cached[cached.length-1] < pages && !prev) {
-                insertLeft = false;
-                reqPageNum = cached[cached.length-1] + 1;
-                cached.push(reqPageNum);
-            }
-
-            if (isBreakUp() && cached[0] > 1 && !prev) {
-                insertLeft = true;
-                reqPageNum = cached[0] - 1;
-                cached.unshift(reqPageNum);
-            }
-
-            if (reqPageNum) load(reqPageNum, insertLeft);
-            prev = !!reqPageNum;
+            if (isBreakDown()) load('down');
+            if (isBreakUp()) load('up');
         };
     },
 
