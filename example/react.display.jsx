@@ -58,7 +58,7 @@ export default React.createClass({
                     scrollBoxId = {"wrap"}
                     containerId = {"box"}
                     load = {this.load}
-                    shift={30}
+                    hasMore = {false}
                 > {list} </Infinity>
             </ul>
         </div>

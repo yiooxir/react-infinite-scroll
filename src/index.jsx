@@ -5,13 +5,20 @@ window.React = React;
 
 export default React.createClass({
 
+    getInitialState: function() {
+        return {
+            blockHeight: 1000
+        }
+    },
+
     getDefaultProps: function() {
         return {
             shift: 1,
             load: () => {},
             children: this.children,
             threshold: 50,
-            loader: React.DOM.div('load...')
+            loader: React.DOM.div('load...'),
+            hasMore: false
         }
     },
 
@@ -22,6 +29,10 @@ export default React.createClass({
         this.scrollBox = document.getElementById(scrollBoxId);
         this.component = React.findDOMNode(this);
         this.container = document.getElementById(containerId);
+
+        this.setState({
+            blockHeight: this.scrollBox.offsetHeight
+        });
 
         this.shift();
         this.scrollTop();
@@ -54,11 +65,25 @@ export default React.createClass({
 
         console.log('componentWillUnmount')
     },
+
     render: function() {
         var style = {overflow: 'hidden'};
 
+        var preDivStyle = {
+            height: '1px'
+        };
+
+        var postDivStyle = {
+            height: this.state.blockHeight,
+            display: this.props.hasMore ? 'block': 'none'
+        };
+
         return (
-            <div style={style}>{this.props.children}</div>
+            <div style={style}>
+                <div style = {preDivStyle}></div>
+                {this.props.children}
+                <div style = {postDivStyle}></div>
+            </div>
         )
     },
 
@@ -71,7 +96,7 @@ export default React.createClass({
         };
 
         var isBreakDown = () => {
-            return (container.getBoundingClientRect().bottom - scrollBox.getBoundingClientRect().bottom) < threshold;
+            return (container.getBoundingClientRect().bottom - scrollBox.getBoundingClientRect().bottom - this.state.blockHeight) < threshold;
         };
         scrollBox.onscroll = () => {
 
