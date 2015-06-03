@@ -9,6 +9,7 @@
   "author": "Borovikov SA",
   "license": "ISC",
   "dependencies": {
+    "browser-sync": "^2.7.1",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",
@@ -17,25 +18,21 @@
     "gulp-react": "^3.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-shell": "^0.4.1",
+    "gulp-strip-debug": "^1.0.2",
     "harmonize": "^1.4.1",
     "jest-cli": "^0.4.1",
     "jspm": "^0.15.6",
     "jsx": "^0.9.89",
     "react": "^0.13.2",
     "react-tools": "^0.13.2",
-    "run-sequence": "^1.1.0",
-    "browser-sync": "^2.7.1"
+    "run-sequence": "^1.1.0"
   },
-  "devDependencies": {
-
-  },
+  "devDependencies": {},
   "jspm": {
-    "scripts": {
-      "postinstall": "gulp build"
-    },
     "directories": {},
     "configFile": "jspm.config.js",
     "dependencies": {
+      "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
       "react": "npm:react@^0.14.0-alpha3"
     },
     "devDependencies": {

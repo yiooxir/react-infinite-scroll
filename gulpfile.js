@@ -7,6 +7,7 @@ var del = require('del');
 var browserSync = require('browser-sync').create();
 var babel = require("gulp-babel");
 var rename = require('gulp-rename');
+var stripDebug = require('gulp-strip-debug');
 
 /**
  * Jest cli requires --harmony flags for < node 0.12
@@ -38,23 +39,23 @@ gulp.task('clean-lib', function (cb) {
     del(['lib'], cb);
 });
 
-
 gulp.task('build', ['clean-lib'], function() {
-    return gulp.src('src/*.js')
+    return gulp.src('src/*.js*')
         .pipe(babel())
         .pipe(plugins.react())
+        .pipe(stripDebug())
         .pipe(rename('react-infinity.js'))
         .pipe(gulp.dest('lib'))
 });
 
-gulp.task('buildExampleSite', ['clean-components'], function () {
-    return gulp.src(['app.js', 'scripts/*.js', 'example/*.js', 'lib/*.js'])
-        .pipe(babel())
-        .pipe(plugins.react())
-        .pipe(gulp.dest('components'));
-});
+//gulp.task('buildExampleSite', ['clean-components'], function () {
+//    return gulp.src(['app.js', 'scripts/*.js', 'example/*.js', 'lib/*.js'])
+//        .pipe(babel())
+//        .pipe(plugins.react())
+//        .pipe(gulp.dest('components'));
+//});
 
-gulp.task('watch-source', ['build','buildExampleSite'], browserSync.reload);
+gulp.task('watch-source', browserSync.reload);
 
 gulp.task('serve', function () {
     browserSync.init({
@@ -77,8 +78,8 @@ gulp.task('jest', plugins.shell.task('npm test', {
  */
 gulp.task('develop', function (cb) {
     runSequence(
-        'build',
-        'buildExampleSite',
+        //'build',
+        //'buildExampleSite',
         'serve',
         cb
     );

@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react'
-import Display from './react.display'
+import Display from './react.display.jsx!'
 
 var objects = (function() {
     var objs = [];

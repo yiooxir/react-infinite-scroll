@@ -1,6 +1,8 @@
 
 import React, {propTypes} from 'react'
 
+window.React = React;
+
 export default React.createClass({
 
     getDefaultProps: function() {
@@ -13,24 +15,43 @@ export default React.createClass({
         }
     },
 
-    componentDidMount: function() {
+    componentDidMount: function () {
         var {scrollBoxId, containerId} = this.props;
 
         /* get dom element */
         this.scrollBox = document.getElementById(scrollBoxId);
+        this.component = React.findDOMNode(this);
         this.container = document.getElementById(containerId);
 
         this.shift();
+        this.scrollTop();
         this.attachScrollHandler();
 
         console.log('componentDidMount')
     },
 
+    scrollTop: function() {
+
+        var {scrollBox, component} = this;
+
+        component.cached = component.cached || {};
+        component.cached.f = component.cached.f || false;
+
+        if (component.cached.f) {
+            scrollBox.scrollTop = component.offsetHeight - component.cached.height;
+            component.cached.f = false;
+        }
+
+        component.cached.height = component.offsetHeight;
+    },
+
     componentDidUpdate: function() {
+        this.scrollTop();
         console.log('componentDidUpdate')
     },
 
     componentWillUnmount: function() {
+
         console.log('componentWillUnmount')
     },
     render: function() {
@@ -42,15 +63,8 @@ export default React.createClass({
     },
 
     attachScrollHandler: function() {
-        var {page, pages, threshold, load} = this.props;
+        var {threshold, load} = this.props;
         var {scrollBox, container} = this;
-
-        /* pages which has been loaded  { array of number } */
-        var cached = [page],
-        /* if previous step was loaded */
-            prev = false,
-        /* sign for load function */
-            insertLeft = false;
 
         var isBreakUp = () => {
             return threshold > scrollBox.scrollTop
@@ -59,10 +73,17 @@ export default React.createClass({
         var isBreakDown = () => {
             return (container.getBoundingClientRect().bottom - scrollBox.getBoundingClientRect().bottom) < threshold;
         };
-
         scrollBox.onscroll = () => {
-            if (isBreakDown()) load('down');
-            if (isBreakUp()) load('up');
+
+            if (isBreakDown()) {
+                this.component.cached.f = false;
+                load('down');
+            }
+
+            if (isBreakUp()) {
+                this.component.cached.f = true;
+                load('up');
+            }
         };
     },
 
