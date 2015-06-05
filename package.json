@@ -23,8 +23,8 @@
     "jest-cli": "^0.4.1",
     "jspm": "^0.15.6",
     "jsx": "^0.9.89",
-    "react": "^0.13.2",
-    "react-tools": "^0.13.2",
+    "react": "^0.13.3",
+    "react-tools": "^0.13.3",
     "run-sequence": "^1.1.0"
   },
   "devDependencies": {},
@@ -33,7 +33,7 @@
     "configFile": "jspm.config.js",
     "dependencies": {
       "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
-      "react": "npm:react@^0.14.0-alpha3"
+      "react": "npm:react@^0.13.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
