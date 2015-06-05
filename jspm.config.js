@@ -20,7 +20,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.4.7",
     "core-js": "npm:core-js@0.9.13",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
-    "react": "npm:react@0.14.0-alpha3",
+    "react": "npm:react@0.13.3",
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.3"
     },
@@ -337,6 +337,11 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commoner": "npm:commoner@0.10.1",
       "jstransform": "npm:jstransform@10.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:react@0.13.3": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "envify": "npm:envify@3.4.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:react@0.14.0-alpha3": {
